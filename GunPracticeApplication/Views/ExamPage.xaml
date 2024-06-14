@@ -1,0 +1,16 @@
+﻿<Window x:Class="GunPracticeApplication.Views.ExamPage"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Exam Page">
+    <Grid>
+        <!-- Display exam questions and options -->
+        <TextBlock Text="{Binding CurrentQuestion.QuestionTitle}" FontSize="18" FontWeight="Bold" Margin="10"/>
+        <RadioButton Content="{Binding CurrentQuestion.QuestionContent1}" IsChecked="{Binding IsOption1Selected}" Margin="10"/>
+        <RadioButton Content="{Binding CurrentQuestion.QuestionContent2}" IsChecked="{Binding IsOption2Selected}" Margin="10"/>
+        <RadioButton Content="{Binding CurrentQuestion.QuestionContent3}" IsChecked="{Binding IsOption3Selected}" Margin="10"/>
+        <RadioButton Content="{Binding CurrentQuestion.QuestionContent4}" IsChecked="{Binding IsOption4Selected}" Margin="10"/>
+
+        <Button Content="Next Question" Command="{Binding NextQuestionCommand}" Margin="10"/>
+        <Button Content="Submit Exam" Command="{Binding SubmitExamCommand}" Margin="10"/>
+    </Grid>
+</Window>

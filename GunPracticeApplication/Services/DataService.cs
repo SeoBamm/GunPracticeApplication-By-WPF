@@ -8,17 +8,17 @@ namespace GunPracticeApplication.Services
 {
     public class DataService : IDataService
     {
-        private readonly string connectionString;
+        private readonly string _connectionString;
 
         public DataService()
         {
-            connectionString = ConfigurationManager.ConnectionStrings["MySqlConnectionString"].ConnectionString;
+            _connectionString = ConfigurationManager.ConnectionStrings["MySqlConnectionString"].ConnectionString;
         }
 
         public async Task<List<Scenario>> GetScenariosAsync()
         {
             var scenarios = new List<Scenario>();
-            using (var connection = new MySqlConnection(connectionString))
+            using (var connection = new MySqlConnection(_connectionString))
             {
                 await connection.OpenAsync();
                 var command = new MySqlCommand("SELECT scenario_id, scenario_name FROM scenario_db.scenario", connection);
@@ -38,7 +38,7 @@ namespace GunPracticeApplication.Services
         public async Task<List<ScenarioDetail>> GetScenarioDetailsAsync(int scenarioId)
         {
             var details = new List<ScenarioDetail>();
-            using (var connection = new MySqlConnection(connectionString))
+            using (var connection = new MySqlConnection(_connectionString))
             {
                 await connection.OpenAsync();
                 var command = new MySqlCommand("SELECT detail_id, scenario_id, detail_no, detail_title, detail_content FROM scenario_db.scenario_detail WHERE scenario_id = @scenarioId", connection);
@@ -62,7 +62,7 @@ namespace GunPracticeApplication.Services
         public async Task<List<Question>> GetQuestionsAsync(int scenarioId)
         {
             var questions = new List<Question>();
-            using (var connection = new MySqlConnection(connectionString))
+            using (var connection = new MySqlConnection(_connectionString))
             {
                 await connection.OpenAsync();
                 var command = new MySqlCommand("SELECT question_id, scenario_id, question_score, question_title, question_answer, question_content1, question_content2, question_content3, question_content4 FROM scenario_db.question WHERE scenario_id = @scenarioId", connection);
@@ -86,11 +86,28 @@ namespace GunPracticeApplication.Services
             }
             return questions;
         }
+        
+        public async Task<string> GetScenarioNameAsync(int scenarioId)
+        {
+            string scenarioName = null;
+            using (var connection = new MySqlConnection(_connectionString))
+            {
+                await connection.OpenAsync();
+                var command = new MySqlCommand("SELECT scenario_name FROM scenario_db.scenario WHERE scenario_id = @scenarioId", connection);
+                command.Parameters.AddWithValue("@scenarioId", scenarioId);
+                var reader = await command.ExecuteReaderAsync();
+                if (await reader.ReadAsync())
+                {
+                    scenarioName = reader.GetString(0);
+                }
+            }
+            return scenarioName;
+        }
 
         public async Task<Standard> GetStandardAsync(int scenarioId)
         {
             Standard standard = null;
-            using (var connection = new MySqlConnection(connectionString))
+            using (var connection = new MySqlConnection(_connectionString))
             {
                 await connection.OpenAsync();
                 var command = new MySqlCommand("SELECT scenario_id, standard_pass FROM scenario_db.standard WHERE scenario_id = @scenarioId", connection);
