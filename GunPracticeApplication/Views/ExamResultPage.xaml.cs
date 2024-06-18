@@ -1,11 +1,15 @@
 ﻿using System.Windows;
+using GunPracticeApplication.ViewModels;
 
-namespace GunPracticeApplication.Views;
-
-public partial class ExamResultPage : Window
+namespace GunPracticeApplication.Views
 {
-    public ExamResultPage()
+    public partial class ExamResultPage : Window
     {
-        InitializeComponent();
+        public ExamResultPage(ExamResultPageViewModel viewModel)
+        {
+            InitializeComponent();
+            DataContext = viewModel;
+        }
     }
+
 }

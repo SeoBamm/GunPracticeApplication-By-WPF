@@ -9,11 +9,60 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <Folder Include="Images\" />
+      <PackageReference Include="MySql.Data" Version="8.4.0" />
     </ItemGroup>
 
     <ItemGroup>
-      <PackageReference Include="MySql.Data" Version="8.4.0" />
+      <None Remove="Images\img_11.png" />
+      <Resource Include="Images\img_11.png" />
+      <None Remove="Images\img_12.jpg" />
+      <None Remove="Images\img_13.png" />
+      <Resource Include="Images\img_13.png" />
+      <None Remove="Images\img_14.png" />
+      <Resource Include="Images\img_14.png" />
+      <None Remove="Images\img_15.png" />
+      <Resource Include="Images\img_15.png" />
+      <None Remove="Images\img_16.png" />
+      <Resource Include="Images\img_16.png" />
+      <None Remove="Images\img_17.png" />
+      <Resource Include="Images\img_17.png" />
+      <None Remove="Images\img_18.png" />
+      <Resource Include="Images\img_18.png" />
+      <None Remove="Images\img_19.png" />
+      <Resource Include="Images\img_19.png" />
+      <None Remove="Images\img_110.png" />
+      <Resource Include="Images\img_110.png" />
+      <None Remove="Images\img_111.png" />
+      <Resource Include="Images\img_111.png" />
+      <None Remove="Images\img_112.png" />
+      <Resource Include="Images\img_112.png" />
+      <None Remove="Images\img_113.png" />
+      <Resource Include="Images\img_113.png" />
+      <None Remove="Images\img_114.jpg" />
+      <None Remove="Images\img_115.jpg" />
+      <None Remove="Images\img_12.png" />
+      <Resource Include="Images\img_12.png" />
+      <None Remove="Images\img_114.png" />
+      <None Remove="Images\img_115.png" />
+      <None Remove="Images\img_21.png" />
+      <Resource Include="Images\img_21.png" />
+      <None Remove="Images\img_22.png" />
+      <Resource Include="Images\img_22.png" />
+      <None Remove="Images\img_23.png" />
+      <Resource Include="Images\img_23.png" />
+      <None Remove="Images\img_24.png" />
+      <Resource Include="Images\img_24.png" />
+      <None Remove="Images\img_25.png" />
+      <Resource Include="Images\img_25.png" />
+      <None Remove="Images\img_26.png" />
+      <Resource Include="Images\img_26.png" />
+      <None Remove="Images\img_27.png" />
+      <Resource Include="Images\img_27.png" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Resource Include="Images\img_114.png" />
+      <Resource Include="Images\img_115.png" />
     </ItemGroup>
 
 </Project>

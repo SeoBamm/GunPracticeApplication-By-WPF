@@ -2,12 +2,8 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:viewModels="clr-namespace:GunPracticeApplication.ViewModels"
-        Title="Scenarios Page" Background="#0E2322" Width="1200" Height="800"
+        Title="Gun Practice Application" Background="#0E2322" Width="1200" Height="800"
         DataContext="{Binding RelativeSource={RelativeSource Self}}">
-
-    <Window.Resources>
-        <!-- 리소스 선언 -->
-    </Window.Resources>
 
     <Grid>
         <!-- UI 구성 -->
@@ -23,9 +19,9 @@
                 <Label Height="1" Background="#FFF"/>
                 
                 <!-- 시나리오 세부 정보 목록 -->
-                <ListBox ItemsSource="{Binding ScenarioDetails}"
+                <ListBox Width="250" Height="709" Background="#295655" Foreground="#FFF" ItemsSource="{Binding ScenarioDetails}"
                          SelectedItem="{Binding SelectedDetail, Mode=TwoWay}"
-                         Margin="10">
+                         BorderBrush="#123332" FontWeight="Bold" FontSize="14" >
                     <ListBox.ItemTemplate>
                         <DataTemplate>
                             <TextBlock Text="{Binding DetailTitle}" Margin="10"/>
@@ -47,6 +43,7 @@
 
             <!-- 가로 선 -->
             <Label DockPanel.Dock="Bottom" Height="1" Background="#FFF"></Label>
+            <Image DockPanel.Dock="Top" HorizontalAlignment="Center" VerticalAlignment="Center" Width="909" Height="519" Margin="20" Stretch="Uniform" Source="{Binding ImageSource}"/>
         </DockPanel>
     </Grid>
 </Window>

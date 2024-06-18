@@ -3,7 +3,10 @@ using System.ComponentModel;
 using GunPracticeApplication.Models;
 using GunPracticeApplication.Services;
 using System;
+using System.IO;
 using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Media.Imaging;
 
 namespace GunPracticeApplication.ViewModels
 {
@@ -14,6 +17,7 @@ namespace GunPracticeApplication.ViewModels
         private ObservableCollection<ScenarioDetail> _scenarioDetails;
         private ScenarioDetail _selectedDetail;
         private string _scenarioName;
+        private BitmapImage _imageSource;
 
         public ObservableCollection<ScenarioDetail> ScenarioDetails
         {
@@ -34,6 +38,7 @@ namespace GunPracticeApplication.ViewModels
                 OnPropertyChanged(nameof(SelectedDetail));
                 OnPropertyChanged(nameof(SelectedDetailTitle));
                 OnPropertyChanged(nameof(SelectedDetailContent));
+                LoadScenarioImage(SelectedDetail.ScenarioId, SelectedDetail.DetailNo);
             }
         }
 
@@ -47,6 +52,16 @@ namespace GunPracticeApplication.ViewModels
             {
                 _scenarioName = value;
                 OnPropertyChanged(nameof(ScenarioName));
+            }
+        }
+
+        public BitmapImage ImageSource
+        {
+            get => _imageSource;
+            set
+            {
+                _imageSource = value;
+                OnPropertyChanged(nameof(ImageSource));
             }
         }
 
@@ -70,6 +85,24 @@ namespace GunPracticeApplication.ViewModels
             {
                 // 예외 처리 필요
                 Console.WriteLine($"Error loading scenario details: {ex.Message}");
+            }
+        }
+
+        private async void LoadScenarioImage(int scenarioId, int DetailNo)
+        {
+            if (SelectedDetail != null)
+            {
+                try
+                {
+                    Uri resourceUri = new Uri($"pack://application:,,,/GunPracticeApplication;component/Images/img_{scenarioId}{DetailNo}.png");
+                    ImageSource = new BitmapImage(resourceUri);
+                }
+                catch (Exception ex)
+                {
+                    // 예외 처리 필요
+                    Console.WriteLine($"Error loading scenario image: {ex.Message}");
+                    ImageSource = null;
+                }
             }
         }
 

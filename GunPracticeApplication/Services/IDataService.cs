@@ -10,5 +10,7 @@ namespace GunPracticeApplication.Services
         Task<List<ScenarioDetail>> GetScenarioDetailsAsync(int scenarioId);
         Task<List<Question>> GetQuestionsAsync(int scenarioId);
         Task<Standard> GetStandardAsync(int scenarioId);
+        Task<int> GetStandardPassAsync(int scenarioId);
+        // Task<string> GetScenarioImageAsync(int detailId);
     }
 }
